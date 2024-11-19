@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  gap: 2rem;
+}
+
+.links.close {
+  display: none;
+}
+
+.links {
+  display: block;
+}
+
+.input-wrapper {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.input-wrapper.error {
+  border-color: red;
+}
+
+.input-wrapper.valid {
+  border-color: green;
+}
+
+.input-wrapper .feedback {
+  display: none;
+  margin: 0;
+  color: red;
+}
+
+.input-wrapper.error .feedback {
+  display: block;
+}
