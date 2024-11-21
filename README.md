@@ -202,3 +202,76 @@ Vi fortsätter och lägger feedback för att göra det enklare för user att fö
 ```js
 const feedback = document.querySelector(".feedback");
 ```
+
+### Submit
+
+The submit event is used together with a form-tag and one or many input fields. The submit event is triggered when the form is submitted, either with a click on the submit btn or on a return key click from within the form.
+
+A form with a couple input fields:
+
+HTML
+
+```html
+<form class="form">
+  <input class="name" type="text" placeholder="Your name" />
+  <input class="age" type="number" placeholder="Your age" />
+  <textarea class="text-input" placeholder="What are your wishes?"></textarea>
+  <button type="submit">Send</button>
+</form>
+```
+
+addEventListeners:
+
+```js
+const form = document.querySelector(".form")
+
+form.addEventListener("submit", (event) => {});
+```
+To get rid of the default behaviour when a form is submitted, we can invoke a special method called `preventDefault()` on the event object. The website refreshes once submitted by default and we want to remove it.
+
+```js
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+```
+
+Now when the default behaviour is gone we can start collecting the information from the input fields. We do that with more references, and then we get the value attribute of those references.
+
+```js
+const form = document.querySelector(".form")
+
+const nameInput = document.querySelector(".name");
+const ageInput = document.querySelector(".age");
+const textInput = document.querySelector(".text-input");
+
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+```
+
+Now we have the references, we can start getting the values from them.
+
+```js
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  const age = ageInput.value;
+  const text = textInput.value;
+
+  const wishObj = {
+    name,
+    age,
+    text,
+  };
+
+  console.log(wishObj);
+});
+```
+
+Common case using a submit event on a form tag. User types information, we collect it and store it in a Object that we can then send to some server for processing.
+
+But we can do more in a submit event as well, for example basic validation.
+
+The easiest kind of validation when it comes to inputs is to add `required` attribute to the input fields.

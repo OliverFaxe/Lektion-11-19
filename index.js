@@ -1,13 +1,13 @@
 const button = document.querySelector(".btn");
 
 button.addEventListener("click", (event) => {
- console.log("The button has been clicked.");
-})
+  console.log("The button has been clicked.");
+});
 
 const button1 = document.querySelector(".button1");
 
 button1.addEventListener("click", (event) => {
-    button1.innerText = "Changed text";
+  button1.innerText = "Changed text";
 });
 
 const linkButton = document.querySelector(".link-btn");
@@ -25,22 +25,51 @@ linkButton.addEventListener("click", () => {
   }
 });
 
-const fieldset = document.querySelector(".input-wrapper")
+const fieldset = document.querySelector(".input-wrapper");
 const input = document.querySelector(".input-wrapper input");
 const feedback = document.querySelector(".feedback");
 
 input.addEventListener("input", (event) => {
-    const value = event.target.value;
+  const value = event.target.value;
 
-    if (inputIsValid(value)) {
-        fieldset.classList.add("valid");
-        fieldset.classList.remove("error");
-    } else {
-        fieldset.classList.remove("valid");
-        fieldset.classList.add("error");
-    }
+  if (inputIsValid(value)) {
+    fieldset.classList.add("valid");
+    fieldset.classList.remove("error");
+  } else {
+    fieldset.classList.remove("valid");
+    fieldset.classList.add("error");
+  }
 });
 
 function inputIsValid(value) {
-    return value.length >= 7;
+  return value.length >= 7;
+}
+
+const form = document.querySelector(".form");
+
+const nameInput = document.querySelector(".name");
+const ageInput = document.querySelector(".age");
+const textInput = document.querySelector(".text-input");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = nameInput.value;
+  const age = ageInput.value;
+  const text = textInput.value;
+
+  validateForm();
+
+  const wishObj = {
+    name,
+    age,
+    text,
+  };
+
+  console.log(wishObj);
+
+  form.reset();
+});
+
+function validateForm() {
+  console.log("Form was validated.");
 }
